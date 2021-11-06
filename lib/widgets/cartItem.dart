@@ -8,7 +8,9 @@ class CartItem extends StatelessWidget {
   final int quantity;
   final String title;
   final String productId;
-  CartItem(this.id, this.price, this.productId, this.quantity, this.title);
+  const CartItem(this.id, this.price, this.productId, this.quantity, this.title,
+      {Key? key})
+      : super(key: key);
 
   @override
   Widget build(BuildContext context) {
@@ -17,9 +19,9 @@ class CartItem extends StatelessWidget {
       background: Container(
         color: Theme.of(context).errorColor,
         alignment: Alignment.centerRight,
-        margin: EdgeInsets.symmetric(horizontal: 15, vertical: 4),
-        padding: EdgeInsets.only(right: 20),
-        child: Icon(
+        margin: const EdgeInsets.symmetric(horizontal: 15, vertical: 4),
+        padding: const EdgeInsets.only(right: 20),
+        child: const Icon(
           Icons.delete,
           color: Colors.white,
           size: 40,
@@ -30,9 +32,9 @@ class CartItem extends StatelessWidget {
         Provider.of<CartP>(context, listen: false).removeItem(productId);
       },
       child: Card(
-        margin: EdgeInsets.all(10),
+        margin: const EdgeInsets.all(10),
         child: Padding(
-          padding: EdgeInsets.all(20),
+          padding: const EdgeInsets.all(20),
           child: ListTile(
             leading: CircleAvatar(
               child: Padding(

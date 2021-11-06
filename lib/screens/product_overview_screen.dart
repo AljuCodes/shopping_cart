@@ -36,12 +36,12 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
                 });
               },
               itemBuilder: (_) => [
-                    PopupMenuItem(
+                    const PopupMenuItem(
                       child: Text('Only Favorite'),
                       value: filterOptions.Favorites,
                     ),
-                    PopupMenuItem(
-                      child: Text('Show All'),
+                    const PopupMenuItem(
+                      child: const Text('Show All'),
                       value: filterOptions.All,
                     )
                   ]),
@@ -51,7 +51,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               value: cart.itemCount.toString(),
             ),
             child: IconButton(
-              icon: Icon(Icons.shopping_bag),
+              icon: const Icon(Icons.shopping_bag),
               onPressed: () {
                 Navigator.pushNamed(context, CartScreen.routeName);
               },
@@ -59,7 +59,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           )
         ],
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ProductGrid(_showOnlyFavorites),
     );
   }

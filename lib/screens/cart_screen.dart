@@ -15,19 +15,19 @@ class CartScreen extends StatelessWidget {
     final cart = Provider.of<CartP>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Cart'),
+        title: const Text('Cart'),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: Column(
         children: [
           Card(
-            margin: EdgeInsets.all(15),
+            margin: const EdgeInsets.all(15),
             child: Padding(
-              padding: EdgeInsets.all(8),
+              padding: const EdgeInsets.all(8),
               child: Row(
                 children: [
-                  Text('Total'),
-                  Spacer(),
+                  const Text('Total'),
+                  const Spacer(),
                   Chip(
                     backgroundColor: Theme.of(context).primaryColor,
                     label: Text(
@@ -39,9 +39,9 @@ class CartScreen extends StatelessWidget {
                               ?.color),
                     ),
                   ),
-                  SizedBox(width: 10),
+                  const SizedBox(width: 10),
                   FlatButton(
-                    child: Text('Order Now'),
+                    child: const Text('Order Now'),
                     onPressed: () {
                       Navigator.of(context).pushNamed(OrdersScreen.routeName);
 
@@ -57,7 +57,7 @@ class CartScreen extends StatelessWidget {
               ),
             ),
           ),
-          SizedBox(
+          const SizedBox(
             height: 5,
           ),
           Expanded(
