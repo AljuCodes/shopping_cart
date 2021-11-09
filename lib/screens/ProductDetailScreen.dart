@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/providers/products.dart';
@@ -17,6 +19,7 @@ class ProductDetailScreen extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(children: [
+          // ignore: sized_box_for_whitespace
           Container(
             height: 300,
             width: double.infinity,
@@ -25,17 +28,17 @@ class ProductDetailScreen extends StatelessWidget {
               fit: BoxFit.cover,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Text(
             '\$${loadedProduct.price}',
-            style: TextStyle(
+            style: const TextStyle(
               color: Colors.grey,
               fontSize: 20,
             ),
           ),
-          SizedBox(height: 10),
+          const SizedBox(height: 10),
           Container(
-            padding: EdgeInsets.symmetric(horizontal: 10),
+            padding: const EdgeInsets.symmetric(horizontal: 10),
             width: double.infinity,
             child: Text(
               loadedProduct.description,

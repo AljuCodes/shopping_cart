@@ -40,6 +40,7 @@ class CartScreen extends StatelessWidget {
                     ),
                   ),
                   const SizedBox(width: 10),
+                  // ignore: deprecated_member_use
                   FlatButton(
                     child: const Text('Order Now'),
                     onPressed: () {

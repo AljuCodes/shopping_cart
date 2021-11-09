@@ -1,3 +1,5 @@
+// ignore_for_file: file_names
+
 import 'dart:math';
 
 import 'package:flutter/material.dart';
@@ -7,7 +9,7 @@ import 'package:intl/intl.dart';
 
 class OrderItem extends StatefulWidget {
   final OrderItemP order;
-  const OrderItem(this.order);
+  const OrderItem(this.order, {Key? key}) : super(key: key);
 
   @override
   State<OrderItem> createState() => _OrderItemState();

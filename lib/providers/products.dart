@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import './product.dart';
 
 class Products with ChangeNotifier {
-  List<Product> _items = [
+  final List<Product> _items = [
     Product(
       id: 'p1',
       title: 'Red Shirt',
@@ -42,7 +42,7 @@ class Products with ChangeNotifier {
     return [..._items];
   }
 
-  var _showFavoritesOnly = false;
+  // final _showFavoritesOnly = false;
 
   List<Product> get favoriteItems {
     return _items.where((productItem) => productItem.isFavorite).toList();
@@ -52,8 +52,35 @@ class Products with ChangeNotifier {
     return _items.firstWhere((prod) => prod.id == id);
   }
 
-  void addProduct() {
+  void addProduct(product) {
     // _items.add(value);
+    final newProduct = Product(
+      title: product.title,
+      description: product.description,
+      price: product.price,
+      imageUrl: product.imageUrl,
+      id: DateTime.now().toString(),
+    );
+    _items.add(newProduct);
     notifyListeners();
   }
+
+  void updateProduct(String id, Product editProduct) {
+    final productIndex = _items.indexWhere((prod) => prod.id == id);
+    if (productIndex >= 0) {
+      _items[productIndex] = editProduct;
+      notifyListeners();
+    } else {
+      // ignore: avoid_print
+      print('...');
+    }
+  }
+
+  deleteProduct(String id) {
+    _items.removeWhere((prod) => prod.id == id);
+    notifyListeners();
+  }
+
+  final url = Uri.parse('https://shop-app-f0a34-default-rtdb.firebaseio.com/');
+// http.post(url, ...);
 }

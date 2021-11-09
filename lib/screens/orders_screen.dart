@@ -1,4 +1,3 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/providers/orders.dart';
@@ -14,9 +13,9 @@ class OrdersScreen extends StatelessWidget {
     final orderData = Provider.of<OrdersP>(context);
     return Scaffold(
       appBar: AppBar(
-        title: Text('Order'),
+        title: const Text('Order'),
       ),
-      drawer: AppDrawer(),
+      drawer: const AppDrawer(),
       body: ListView.builder(
           itemCount: orderData.orders.length,
           itemBuilder: (context, index) => OrderItem(orderData.orders[index])),

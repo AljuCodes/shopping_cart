@@ -7,10 +7,10 @@ import 'package:shopping_cart/widgets/badge.dart';
 
 import 'package:shopping_cart/widgets/products_grid.dart';
 
-enum filterOptions { Favorites, All }
+enum filterOptions { favorites, all }
 
 class ProductOverviewScreen extends StatefulWidget {
-  ProductOverviewScreen({Key? key}) : super(key: key);
+  const ProductOverviewScreen({Key? key}) : super(key: key);
 
   @override
   State<ProductOverviewScreen> createState() => _ProductOverviewScreenState();
@@ -28,7 +28,7 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
           PopupMenuButton(
               onSelected: (filterOptions selecetedValue) {
                 setState(() {
-                  if (selecetedValue == filterOptions.Favorites) {
+                  if (selecetedValue == filterOptions.favorites) {
                     _showOnlyFavorites = true;
                   } else {
                     _showOnlyFavorites = false;
@@ -38,11 +38,11 @@ class _ProductOverviewScreenState extends State<ProductOverviewScreen> {
               itemBuilder: (_) => [
                     const PopupMenuItem(
                       child: Text('Only Favorite'),
-                      value: filterOptions.Favorites,
+                      value: filterOptions.favorites,
                     ),
                     const PopupMenuItem(
-                      child: const Text('Show All'),
-                      value: filterOptions.All,
+                      child: Text('Show All'),
+                      value: filterOptions.all,
                     )
                   ]),
           Consumer<CartP>(

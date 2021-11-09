@@ -1,3 +1,5 @@
+// ignore_for_file: deprecated_member_use
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/providers/cart.dart';
@@ -5,6 +7,8 @@ import 'package:shopping_cart/providers/product.dart';
 import 'package:shopping_cart/screens/ProductDetailScreen.dart';
 
 class ProductItem extends StatelessWidget {
+  const ProductItem({Key? key}) : super(key: key);
+
   // final String id;
   // final String title;
   // final String imageUrl;
@@ -39,15 +43,26 @@ class ProductItem extends StatelessWidget {
               onPressed: () {
                 product.toggleFavoriteStatus();
               },
-              color: Theme.of(context).accentColor,
+              color: Colors.deepOrange,
             ),
           ),
           trailing: IconButton(
-            icon: Icon(Icons.shopping_cart),
+            icon: const Icon(Icons.shopping_cart_outlined),
             onPressed: () {
               cart.addItem(product.id, product.price, product.title);
+              ScaffoldMessenger.of(context).hideCurrentSnackBar();
+              ScaffoldMessenger.of(context).showSnackBar(SnackBar(
+                content: const Text('Added item to cart'),
+                duration: const Duration(seconds: 2),
+                action: SnackBarAction(
+                  label: 'UNDO',
+                  onPressed: () {
+                    cart.removeSingleItem(product.id);
+                  },
+                ),
+              ));
             },
-            color: Theme.of(context).accentColor,
+            color: Colors.deepOrange,
           ),
         ),
       ),
