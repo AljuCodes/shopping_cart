@@ -41,19 +41,7 @@ class CartScreen extends StatelessWidget {
                   ),
                   const SizedBox(width: 10),
                   // ignore: deprecated_member_use
-                  FlatButton(
-                    child: const Text('Order Now'),
-                    onPressed: () {
-                      Navigator.of(context).pushNamed(OrdersScreen.routeName);
-
-                      Provider.of<OrdersP>(context, listen: false).addOrder(
-                          cart.items.values.toList(), cart.totalAmount);
-
-                      cart.clear();
-                      // Navigator.pop(context);
-                    },
-                    textColor: Theme.of(context).primaryColor,
-                  )
+                  OrderButton(cart: cart)
                 ],
               ),
             ),
@@ -74,6 +62,46 @@ class CartScreen extends StatelessWidget {
           ))
         ],
       ),
+    );
+  }
+}
+
+class OrderButton extends StatefulWidget {
+  const OrderButton({
+    Key? key,
+    required this.cart,
+  }) : super(key: key);
+
+  final CartP cart;
+
+  @override
+  State<OrderButton> createState() => _OrderButtonState();
+}
+
+class _OrderButtonState extends State<OrderButton> {
+  var _isLoading = false;
+  @override
+  Widget build(BuildContext context) {
+    // ignore: deprecated_member_use
+    return FlatButton(
+      child: _isLoading ? CircularProgressIndicator() : Text('Order Now'),
+      onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
+          ? null
+          : () async {
+              setState(() {
+                _isLoading = true;
+              });
+              //  Navigator.of(context).pushNamed(OrdersScreen.routeName);
+
+              await Provider.of<OrdersP>(context, listen: false).addOrder(
+                  widget.cart.items.values.toList(), widget.cart.totalAmount);
+              setState(() {
+                _isLoading = false;
+              });
+              widget.cart.clear();
+              // Navigator.pop(context);
+            },
+      textColor: Theme.of(context).primaryColor,
     );
   }
 }
