@@ -209,6 +209,7 @@ class _AuthCardState extends State<AuthCard> {
                 else
                   // ignore: deprecated_member_use
                   //login or signup button based on the enum
+                  // ignore: deprecated_member_use
                   RaisedButton(
                     child:
                         Text(_authMode == AuthMode.Login ? 'LOGIN' : 'SIGN UP'),
@@ -223,6 +224,7 @@ class _AuthCardState extends State<AuthCard> {
                   ),
                 // ignore: deprecated_member_use
                 //button that switches between login and signup
+                // ignore: deprecated_member_use
                 FlatButton(
                   child: Text(
                       '${_authMode == AuthMode.Login ? 'SIGNUP' : 'LOGIN'} INSTEAD'),
