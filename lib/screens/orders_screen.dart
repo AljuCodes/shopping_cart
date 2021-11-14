@@ -1,3 +1,5 @@
+// ignore_for_file: avoid_print
+
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/providers/orders.dart';
@@ -13,7 +15,7 @@ class OrdersScreen extends StatefulWidget {
 }
 
 class _OrdersScreenState extends State<OrdersScreen> {
-  dynamic _ordersFuture = null;
+  dynamic _ordersFuture;
   Future _obtainOrdersFuture() {
     return Provider.of<OrdersP>(context, listen: false).fetchAndSetOrders();
   }

@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:shopping_cart/providers/cart.dart';
 import 'package:shopping_cart/providers/orders.dart';
-import 'package:shopping_cart/screens/orders_screen.dart';
 import 'package:shopping_cart/widgets/app_drawer.dart';
 import 'package:shopping_cart/widgets/cartItem.dart';
 
@@ -84,7 +83,9 @@ class _OrderButtonState extends State<OrderButton> {
   Widget build(BuildContext context) {
     // ignore: deprecated_member_use
     return FlatButton(
-      child: _isLoading ? CircularProgressIndicator() : Text('Order Now'),
+      child: _isLoading
+          ? const CircularProgressIndicator()
+          : const Text('Order Now'),
       onPressed: (widget.cart.totalAmount <= 0 || _isLoading)
           ? null
           : () async {

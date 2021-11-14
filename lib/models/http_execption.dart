@@ -1,6 +1,6 @@
-class HttpExeception implements Exception {
+class HttpExeceptionM implements Exception {
   final String message;
-  HttpExeception(this.message);
+  HttpExeceptionM(this.message);
   @override
   String toString() => "HttpException: $message";
 }
